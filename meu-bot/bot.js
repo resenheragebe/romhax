@@ -231,11 +231,13 @@ var streak = 0;
 
 var authArray = [];
 var adminList = [
+	'kL06MdjZIO75LgB54DUNJ9drYREuwyRapLdwBHck_QE'
     // ['INSERT_AUTH_HERE_1', 'NICK_OF_ADMIN_1'],
     // ['INSERT_AUTH_HERE_2', 'NICK_OF_ADMIN_2'],
 ];
 var masterList = [
-    // 'INSERT_MASTER_AUTH_HERE',
+	'kL06MdjZIO75LgB54DUNJ9drYREuwyRapLdwBHck_QE'
+    //C INSERT_MASTER_AUTH_HERE',
     // 'INSERT_MASTER_AUTH_HERE_2'
 ];
 
@@ -731,7 +733,7 @@ function playerChat(player, message) {
     );
     if (playerTargetIndex == -1) {
         room.sendAnnouncement(
-            `Invalid player, make sure the name you entered is correct.`,
+            `Jogador invalido, veja se o nome esta correto.`,
             player.id,
             errorColor,
             'bold',
@@ -1349,7 +1351,7 @@ function unmuteCommand(player, message) {
 function muteListCommand(player, message) {
     if (muteArray.list.length == 0) {
         room.sendAnnouncement(
-            "🔇 There's nobody in the mute list.",
+            "🔇 Não ha ninguem mutado.",
             player.id,
             announcementColor,
             'bold',
@@ -1378,7 +1380,7 @@ function clearbansCommand(player, message) {
     if (msgArray.length == 0) {
         room.clearBans();
         room.sendAnnouncement(
-            '✔️ Bans cleared !',
+            '✔️ Bans removidos !',
             null,
             announcementColor,
             'bold',
@@ -1391,7 +1393,7 @@ function clearbansCommand(player, message) {
             room.clearBan(ID);
             if (banList.length != banList.filter((p) => p[1] != ID).length) {
                 room.sendAnnouncement(
-                    `✔️ ${banList.filter((p) => p[1] == ID)[0][0]} has been unbanned from the room !`,
+                    `✔️ ${banList.filter((p) => p[1] == ID)[0][0]} foi desbanido !`,
                     null,
                     announcementColor,
                     'bold',
@@ -1399,7 +1401,7 @@ function clearbansCommand(player, message) {
                 );
             } else {
                 room.sendAnnouncement(
-                    `The ID you entered doesn't have a ban associated to. Enter "!help clearbans" for more information.`,
+                    `O ID que você inseriu não possui um banimento associado. Digite "!help clearbans" para mais informações..`,
                     player.id,
                     errorColor,
                     'bold',
@@ -1409,7 +1411,7 @@ function clearbansCommand(player, message) {
             banList = banList.filter((p) => p[1] != ID);
         } else {
             room.sendAnnouncement(
-                `Invalid ID entered. Enter "!help clearbans" for more information.`,
+                `ID inválido inserido. Digite "!help clearbans" para mais informações..`,
                 player.id,
                 errorColor,
                 'bold',
@@ -1418,7 +1420,7 @@ function clearbansCommand(player, message) {
         }
     } else {
         room.sendAnnouncement(
-            `Wrong number of arguments. Enter "!help clearbans" for more information.`,
+            `Número incorreto de argumentos. Digite "!help clearbans" para mais informações.`,
             player.id,
             errorColor,
             'bold',
@@ -1430,7 +1432,7 @@ function clearbansCommand(player, message) {
 function banListCommand(player, message) {
     if (banList.length == 0) {
         room.sendAnnouncement(
-            "📢 There's nobody in the ban list.",
+            "📢 Não há ninguém na lista de banidos.",
             player.id,
             announcementColor,
             'bold',
@@ -1455,7 +1457,7 @@ function banListCommand(player, message) {
 function adminListCommand(player, message) {
     if (adminList.length == 0) {
         room.sendAnnouncement(
-            "📢 There's nobody in the admin list.",
+            "📢 Não há ninguém na lista de administradores.",
             player.id,
             announcementColor,
             'bold',
@@ -1490,7 +1492,7 @@ function setAdminCommand(player, message) {
                         room.setPlayerAdmin(playerAdmin.id, true);
                         adminList.push([authArray[playerAdmin.id][0], playerAdmin.name]);
                         room.sendAnnouncement(
-                            `${playerAdmin.name} is now a room admin !`,
+                            `${playerAdmin.name} agora é um adm !`,
                             null,
                             announcementColor,
                             'bold',
@@ -1498,7 +1500,7 @@ function setAdminCommand(player, message) {
                         );
                     } else {
                         room.sendAnnouncement(
-                            `This player is a master already !`,
+                            `Este jogador já é um mestre!`,
                             player.id,
                             errorColor,
                             'bold',
@@ -1507,7 +1509,7 @@ function setAdminCommand(player, message) {
                     }
                 } else {
                     room.sendAnnouncement(
-                        `This player is a permanent admin already !`,
+                        `Este jogador já é um administrador permanente!`,
                         player.id,
                         errorColor,
                         'bold',
@@ -1525,7 +1527,7 @@ function setAdminCommand(player, message) {
             }
         } else {
             room.sendAnnouncement(
-                `Incorrect format for your argument. Enter "!help setadmin" for more information.`,
+                `Formato incorreto para o seu argumento. Digite "!help setadmin" para mais informações.`,
                 player.id,
                 errorColor,
                 'bold',
@@ -1534,7 +1536,7 @@ function setAdminCommand(player, message) {
         }
     } else {
         room.sendAnnouncement(
-            `Wrong number of arguments. Enter "!help setadmin" for more information.`,
+            `Número incorreto de argumentos. Digite "!help setadmin" para mais informações.`,
             player.id,
             errorColor,
             'bold',
@@ -1555,7 +1557,7 @@ function removeAdminCommand(player, message) {
                     room.setPlayerAdmin(playerAdmin.id, false);
                     adminList = adminList.filter((a) => a[0] != authArray[playerAdmin.id][0]);
                     room.sendAnnouncement(
-                        `${playerAdmin.name} is not a room admin anymore !`,
+                        `${playerAdmin.name} não é mais um administrador de sala!`,
                         null,
                         announcementColor,
                         'bold',
@@ -1563,7 +1565,7 @@ function removeAdminCommand(player, message) {
                     );
                 } else {
                     room.sendAnnouncement(
-                        `This player isn't a permanent admin !`,
+                        `Este jogador não é um administrador permanente !`,
                         player.id,
                         errorColor,
                         'bold',
@@ -1572,7 +1574,7 @@ function removeAdminCommand(player, message) {
                 }
             } else {
                 room.sendAnnouncement(
-                    `There is no player with such ID in the room. Enter "!help removeadmin" for more information.`,
+                    `Não há nenhum jogador com esse ID na sala. Digite "!help removeadmin" para mais informações.`,
                     player.id,
                     errorColor,
                     'bold',
@@ -1589,7 +1591,7 @@ function removeAdminCommand(player, message) {
             }
             adminList.splice(index);
             room.sendAnnouncement(
-                `${playerAdmin[1]} is not a room admin anymore !`,
+                `${playerAdmin[1]} não é mais um administrador de sala!`,
                 null,
                 announcementColor,
                 'bold',
@@ -1597,7 +1599,7 @@ function removeAdminCommand(player, message) {
             );
         } else {
             room.sendAnnouncement(
-                `Incorrect format for your argument. Enter "!help removeadmin" for more information.`,
+                `Formato incorreto para o seu argumento. Digite "!help removeadmin" para mais informações.`,
                 player.id,
                 errorColor,
                 'bold',
@@ -1606,7 +1608,7 @@ function removeAdminCommand(player, message) {
         }
     } else {
         room.sendAnnouncement(
-            `Wrong number of arguments. Enter "!help removeadmin" for more information.`,
+            `Número incorreto de argumentos. Digite "!help removeadmin" para mais informações.`,
             player.id,
             errorColor,
             'bold',
@@ -1622,7 +1624,7 @@ function passwordCommand(player, message) {
             roomPassword = '';
             room.setPassword(null);
             room.sendAnnouncement(
-                `The room password has been removed.`,
+                `A senha da sala foi removida.`,
                 player.id,
                 announcementColor,
                 'bold',
@@ -1632,7 +1634,7 @@ function passwordCommand(player, message) {
         roomPassword = msgArray.join(' ');
         room.setPassword(roomPassword);
         room.sendAnnouncement(
-            `The room password has been set to ${roomPassword}`,
+            `A senha da sala foi alterada para ${roomPassword}`,
             player.id,
             announcementColor,
             'bold',
@@ -1643,7 +1645,7 @@ function passwordCommand(player, message) {
             roomPassword = '';
             room.setPassword(null);
             room.sendAnnouncement(
-                `The room password has been removed.`,
+                `A senha da sala foi removida.`,
                 player.id,
                 announcementColor,
                 'bold',
@@ -1651,7 +1653,7 @@ function passwordCommand(player, message) {
             );
         } else {
             room.sendAnnouncement(
-                `The room currently does not have a password. Enter "!help password" for more information.`,
+                `Essa sala esta sem senha, digite !help password para saber mais.`,
                 player.id,
                 errorColor,
                 'bold',
@@ -1683,7 +1685,7 @@ function checkTime() {
         if (drawTimeLimit != 0) {
             goldenGoal = true;
             room.sendAnnouncement(
-                '⚽ First goal wins !',
+                '⚽ Primeiro a fazer gol vence !',
                 null,
                 announcementColor,
                 'bold',
@@ -1729,7 +1731,7 @@ function endGame(winner) {
     if (winner == Team.RED) {
         streak++;
         room.sendAnnouncement(
-            `✨ Red Team won ${scores.red} - ${scores.blue} ! Current streak: ${streak}`,
+            `✨ Time vermelho ganhou ${scores.red} - ${scores.blue} ! Sequencia de vitórias: ${streak}`,
             null,
             redColor,
             'bold',
@@ -1738,7 +1740,7 @@ function endGame(winner) {
     } else if (winner == Team.BLUE) {
         streak = 1;
         room.sendAnnouncement(
-            `✨ Blue Team won ${scores.blue} - ${scores.red} ! Current streak: ${streak}`,
+            `✨ Time azul ganhou ${scores.blue} - ${scores.red} ! Sequencia de vitórias: ${streak}`,
             null,
             blueColor,
             'bold',
@@ -1747,7 +1749,7 @@ function endGame(winner) {
     } else {
         streak = 0;
         room.sendAnnouncement(
-            '💤 Draw limit reached !',
+            '💤 Limite de empate encerrado !',
             null,
             announcementColor,
             'bold',
@@ -1762,8 +1764,8 @@ function endGame(winner) {
     let actionString = `🔴 ${actionRedPct.toFixed(0)}% - ${actionBluePct.toFixed(0)}% 🔵`;
     let CSString = getCSString(scores);
     room.sendAnnouncement(
-        `📊 Possession: 🔴 ${possessionString}\n` +
-        `📊 Action Zone: 🔴 ${actionString}\n` +
+        `📊 Posse: 🔴 ${possessionString}\n` +
+        `📊 Zona de ação: 🔴 ${actionString}\n` +
         `${CSString}`,
         null,
         announcementColor,
@@ -1779,7 +1781,7 @@ function activateChooseMode() {
     chooseMode = true;
     slowMode = chooseModeSlowMode;
     room.sendAnnouncement(
-        `🐢 Slow mode changed to choose mode duration of: ${chooseModeSlowMode}s.`,
+        `🐢 Modo lento ativado para escolher a duração do modo: ${chooseModeSlowMode}s.`,
         null,
         announcementColor,
         'bold',
@@ -1793,7 +1795,7 @@ function deactivateChooseMode() {
     if (slowMode != defaultSlowMode) {
         slowMode = defaultSlowMode;
         room.sendAnnouncement(
-            `🐢 Slow mode changed to choose mode duration of: ${defaultSlowMode}s.`,
+            `🐢 Modo lento ativado para escolher a duração do modo: ${defaultSlowMode}s.`,
             null,
             announcementColor,
             'bold',
@@ -1830,7 +1832,7 @@ function choosePlayer() {
     }
     if (captain != null) {
         room.sendAnnouncement(
-            "To choose a player, enter his number in the list given or use 'top', 'random' or 'bottom'.",
+            "Para escolher um jogador digite o numero que aparece na lista ou escolha entre 'top', 'random' ou 'bottom'.",
             captain.id,
             infoColor,
             'bold',
@@ -1839,7 +1841,7 @@ function choosePlayer() {
         timeOutCap = setTimeout(
             (player) => {
                 room.sendAnnouncement(
-                    `Hurry up ${player.name}, only ${Number.parseInt(String(chooseTime / 2))} seconds left to choose !`,
+                    `Hurry up ${player.name}, apenas ${Number.parseInt(String(chooseTime / 2))} segundos restantes para escolher !`,
                     player.id,
                     warningColor,
                     'bold',
@@ -1849,7 +1851,7 @@ function choosePlayer() {
                     (player) => {
                         room.kickPlayer(
                             player.id,
-                            "You didn't choose in time !",
+                            "Você não escolheu a tempo !",
                             false
                         );
                     },
@@ -1875,7 +1877,7 @@ function chooseModeFunction(player, message) {
                 redCaptainChoice = 'top';
                 clearTimeout(timeOutCap);
                 room.sendAnnouncement(
-                    `${player.name} chose Top !`,
+                    `${player.name} escolheu Top !`,
                     null,
                     announcementColor,
                     'bold',
@@ -1887,7 +1889,7 @@ function chooseModeFunction(player, message) {
                 redCaptainChoice = 'random';
                 clearTimeout(timeOutCap);
                 room.sendAnnouncement(
-                    `${player.name} chose Random !`,
+                    `${player.name} escolheu Random !`,
                     null,
                     announcementColor,
                     'bold',
@@ -1898,7 +1900,7 @@ function chooseModeFunction(player, message) {
                 redCaptainChoice = 'bottom';
                 clearTimeout(timeOutCap);
                 room.sendAnnouncement(
-                    `${player.name} chose Bottom !`,
+                    `${player.name} escolheu Bottom !`,
                     null,
                     announcementColor,
                     'bold',
@@ -1935,7 +1937,7 @@ function chooseModeFunction(player, message) {
                 blueCaptainChoice = 'top';
                 clearTimeout(timeOutCap);
                 room.sendAnnouncement(
-                    `${player.name} chose Top !`,
+                    `${player.name} escolheu Top !`,
                     null,
                     announcementColor,
                     'bold',
@@ -1949,7 +1951,7 @@ function chooseModeFunction(player, message) {
                 blueCaptainChoice = 'random';
                 clearTimeout(timeOutCap);
                 room.sendAnnouncement(
-                    `${player.name} chose Random !`,
+                    `${player.name} escolheu Random !`,
                     null,
                     announcementColor,
                     'bold',
@@ -1960,7 +1962,7 @@ function chooseModeFunction(player, message) {
                 blueCaptainChoice = 'bottom';
                 clearTimeout(timeOutCap);
                 room.sendAnnouncement(
-                    `${player.name} chose Bottom !`,
+                    `${player.name} escolheu Bottom !`,
                     null,
                     announcementColor,
                     'bold',
@@ -2074,7 +2076,7 @@ function handleActivityPlayer(player) {
         pComp.inactivityTicks++;
         if (pComp.inactivityTicks == 60 * ((2 / 3) * afkLimit)) {
             room.sendAnnouncement(
-                `⛔ ${player.name}, if you don't move or send a message in the next ${Math.floor(afkLimit / 3)} seconds, you will be kicked !`,
+                `⛔ ${player.name}, se não se mexer ou mandar mensagem em ${Math.floor(afkLimit / 3)} segundos, sera kickado !`,
                 player.id,
                 warningColor,
                 'bold',
@@ -2775,7 +2777,7 @@ function getGoalString(team) {
     if (goalAttribution[0] != null) {
         if (goalAttribution[0].team == team) {
             if (goalAttribution[1] != null && goalAttribution[1].team == team) {
-                goalString = `⚽ ${getTimeGame(scores.time)} Goal by ${goalAttribution[0].name} ! Assist by ${goalAttribution[1].name}. Goal speed : ${ballSpeed.toFixed(2)}km/h.`;
+                goalString = `⚽ ${getTimeGame(scores.time)} Gol de ${goalAttribution[0].name} ! Assistencia de ${goalAttribution[1].name}. Velocidade do gol : ${ballSpeed.toFixed(2)}km/h.`;
                 game.goals.push(
                     new Goal(
                         scores.time,
@@ -2785,19 +2787,19 @@ function getGoalString(team) {
                     )
                 );
             } else {
-                goalString = `⚽ ${getTimeGame(scores.time)} Goal by ${goalAttribution[0].name} ! Goal speed : ${ballSpeed.toFixed(2)}km/h.`;
+                goalString = `⚽ ${getTimeGame(scores.time)} Gol de ${goalAttribution[0].name} ! Velocidade do gol : ${ballSpeed.toFixed(2)}km/h.`;
                 game.goals.push(
                     new Goal(scores.time, team, goalAttribution[0], null)
                 );
             }
         } else {
-            goalString = `😂 ${getTimeGame(scores.time)} Own goal by ${goalAttribution[0].name} ! Goal speed : ${ballSpeed.toFixed(2)}km/h.`;
+            goalString = `😂 ${getTimeGame(scores.time)} Gol contra de ${goalAttribution[0].name} ! Velocidade do gol : ${ballSpeed.toFixed(2)}km/h.`;
             game.goals.push(
                 new Goal(scores.time, team, goalAttribution[0], null)
             );
         }
     } else {
-        goalString = `⚽ ${getTimeGame(scores.time)} Goal for ${team == Team.RED ? 'red' : 'blue'} team ! Goal speed : ${ballSpeed.toFixed(2)}km/h.`;
+        goalString = `⚽ ${getTimeGame(scores.time)} Gol para o ${team == Team.RED ? 'red' : 'blue'} ! Velocidade do gol : ${ballSpeed.toFixed(2)}km/h.`;
         game.goals.push(
             new Goal(scores.time, team, null, null)
         );
@@ -3196,7 +3198,7 @@ room.onPlayerJoin = function (player) {
         }).then((res) => res);
     }
     room.sendAnnouncement(
-        `👋 Eae ${player.name} !\nEnter "t" before your message to use team chat and "@@" followed by a player name to PM him !`,
+        `👋 Eae ${player.name} !\nA sala tá aberta, mas em desenvolvimento arrumando umas coisinhas, espero que se divirta enquanto isso!`,
         player.id,
         welcomeColor,
         'bold',
