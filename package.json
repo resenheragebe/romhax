@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
-    "start": "node sala.js"
+    "start": "npm start"
   },
   "dependencies": {
     "puppeteer": "^22.0.0"
