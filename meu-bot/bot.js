@@ -3,7 +3,7 @@
 /* ROOM */
 
 const roomName = 'RESENHERA | X3 DO GEBE ( EM CONFIG)';
-const maxPlayers = 12;
+const maxPlayers = 99;
 const roomPublic = true;
 const token = "thr1.AAAAAGiJdmqf-WXLitElsQ.BL8P07dYox0"; // Insert token here
 
@@ -18,6 +18,7 @@ var gameConfig = {
     maxPlayers: maxPlayers,
     public: roomPublic,
     noPlayer: true,
+    geo: { "code": 'br', "lat": -12.9704, "lon": -38.5124 }
 }
 
 if (typeof token == 'string' && token.length == 39) {
